@@ -47,6 +47,12 @@ public class MainActivity extends AppCompatActivity {
         CrudUsuario crud = new CrudUsuario(this);
         try {
             Usuario u = crud.iniciarSesion(email, clave);
+            Bundle paquete = new Bundle();
+            paquete.putSerializable("user.login",u);
+            Intent i = new Intent(MainActivity.this, ActividadCrudUsuario.class);
+            i.putExtras(paquete);
+            startActivity(i);
+
         } catch (Exception e) {
             Snackbar.make(view, "Acceso Negado:", Snackbar.LENGTH_INDEFINITE)
                     .setBackgroundTint(getResources().getColor(R.color.mensaje_error_fond))

@@ -35,7 +35,7 @@ public class CrudUsuario {
     }
 
     public Usuario buscarUsuario(String cedula) throws Exception {
-        String sqlSelect = "SELECT * FROM Usuario WHERE cedula = '"+cedula+"'";
+        String sqlSelect = "SELECT * FROM Usuarios WHERE cedula = '"+cedula+"'";
         Log.e("SQL",sqlSelect);
         try {
             Cursor resultado = conexion.consultarEnLaBD(sqlSelect);
@@ -75,8 +75,35 @@ public class CrudUsuario {
         Usuario user = new Usuario();
         user.setCedula(resultado.getString(resultado.getColumnIndex("cedula")));
         user.setClave(resultado.getString(resultado.getColumnIndex("clave")));
-        user.setCedula(resultado.getString(resultado.getColumnIndex("nombre")));
-        user.setCedula(resultado.getString(resultado.getColumnIndex("email")));
+        user.setNombre(resultado.getString(resultado.getColumnIndex("nombre")));
+        user.setEmail(resultado.getString(resultado.getColumnIndex("email")));
         return user;
+    }
+
+    public void actualizarUsuario(Usuario u) throws Exception {
+        String sqlUpdate = "UPDATE Usuarios " +
+                "SET clave = '"+u.getClave()+"', email='"+u.getEmail()+"' " +
+                "WHERE cedula = '"+u.getCedula()+"'";
+        Log.e("SQL", sqlUpdate);
+        try {
+            conexion.modificarLaBD(sqlUpdate);
+        } catch (Exception error) {
+            String mensaje ="El Usuario no fue editado.\nMOTIVO: "+error.getMessage();
+            Log.e("ERROR",mensaje);
+            throw new Exception(mensaje);
+        }
+    }
+
+    public void eliminarUsuario(String cc) throws Exception {
+        String sqlDelete = "DELETE FROM Usuarios " +
+                "WHERE cedula = '"+cc+"'";
+        Log.e("SQL", sqlDelete);
+        try {
+            conexion.modificarLaBD(sqlDelete);
+        } catch (Exception error) {
+            String mensaje ="El Usuario no fue eliminado.\nMOTIVO: "+error.getMessage();
+            Log.e("ERROR",mensaje);
+            throw new Exception(mensaje);
+        }
     }
 }

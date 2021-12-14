@@ -80,6 +80,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
         android:orientation="horizontal">
 
         <Button
@@ -90,6 +91,7 @@
             android:layout_marginRight="20dp"
             android:layout_weight="1"
             android:text="Limpilar"
+            android:onClick="limpiar"
             android:textSize="10sp" />
 
         <Button
@@ -110,8 +112,46 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_weight="1"
-            android:onClick="guardarUsuario"
+            android:onClick="buscarUsuario"
             android:text="Buscar"
+            android:textSize="10sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnEditar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_weight="1"
+            android:text="EDITAR"
+            android:onClick="editarUsuario"
+            android:textSize="10sp" />
+
+        <Button
+            android:id="@+id/btnEliminar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_weight="1"
+            android:onClick="borrarUsuario"
+            android:text="BORRAR"
+            android:textSize="10sp" />
+
+        <Button
+            android:id="@+id/btnListar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_weight="1"
+            android:text="Listar"
             android:textSize="10sp" />
     </LinearLayout>
 
